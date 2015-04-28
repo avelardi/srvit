@@ -7,6 +7,7 @@ Note this does not validate if the files are there.
 
 I also did not like slaughtering the server, so it runs using multiprocessing.process. 
 
+Also gets IP address using socket and verifies by connecting to an actual site (google.com by default)
 Created by Tony Velardi
 """
 
@@ -16,6 +17,7 @@ import getopt
 import SimpleHTTPServer
 import SocketServer
 import multiprocessing
+import socket
 
 port = 80
 indexfilename = 'index.html'
@@ -103,7 +105,11 @@ def webserver(args):
 		print arg
 	p = multiprocessing.Process(target=threadprocess, args=(httpd,))
 	p.start()
-	raw_input("Server running, hit enter to kill")
+	s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+	s.connect(("google.com",80))
+	ip = s.getsockname()[0]
+	s.close()
+	raw_input("Server running at http://%s , hit enter to kill" % (ip))
 	p.terminate()
 	
 def main(args):
