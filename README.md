@@ -13,4 +13,6 @@ Also note it uses multiprocessing to spawn a new PID to sanely kill it.
 
 Release Notes
 --
+v0.2 - Added code to get and show your IP address. 
+
 v0.1 - Initial Release
