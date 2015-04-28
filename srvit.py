@@ -2,6 +2,7 @@
 # encoding: utf-8
 """
 srvit.py
+v0.2 - 04-28-2015
 Simple, temporary webserver. It'll generate an index.html file for the files you list. 
 Note this does not validate if the files are there. 
 
